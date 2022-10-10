@@ -1,19 +1,18 @@
 import React from 'react'
-import exitpopupt from './exitpopupt'
+// import exitpopupt from './exitpopupt'
+import Exitpopuptrigger from './Exitpopuptrigger'
 
 const Model = ({ popups }) => {
-    
 
-
-  const popupsview = () => {
+  // const popupsview = () => {
     if(popups){
         return popups.map((item) => {
             switch (item) {
               case 'Exitintend':
-                return <h1>{exitpopupt()}</h1>
+                return Exitpopuptrigger()
       
               case 'Entryintend':
-                return <h1>Entrypopup Activated</h1>
+                return <h1>Entrypopups</h1>
       
               case 'Addtocart':
                 return <h1>Addtocartpopup Activated</h1>
@@ -25,17 +24,6 @@ const Model = ({ popups }) => {
             }
           })
     }
-    
-  }
-  
-
-
-  return (
-    <div>
-      model
-      <div>{popupsview()}</div>
-    </div>
-  )
 }
 
 export default Model
