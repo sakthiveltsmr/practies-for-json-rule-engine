@@ -17,8 +17,8 @@ const Exitpopuptrigger =() => {
     
   const  facts={ 
     Exitintend:Exitintent,
-    visitafter10seconds:After10,
-    visitafter20seconds:After20,
+    visitafter5seconds:After10,
+    visitafter10seconds:After20,
    }
 
   let engine=new Engine();
@@ -32,12 +32,12 @@ const Exitpopuptrigger =() => {
           value: true
         }, 
         {
-          fact: 'visitafter10seconds',
+          fact: 'visitafter5seconds',
           operator: 'equal',
           value: true
         },
         {
-            fact:'visitafter20seconds',
+            fact:'visitafter10seconds',
             operator:'equal',
             value:true
         }
@@ -79,8 +79,8 @@ useEffect(() => {
     <div>
         <h5>Add ExitPopup Trigger Rules</h5>
         <button onClick={()=>setExitintent(!Exitintent)}>Exitintent</button>{" "}{" "}<span>{Exitintent? "active":"disable"}</span><br/><br/>
-        <button onClick={()=>setAfter10(!After10)}>page visit After10 seconds</button>{" "}<span>{After10? "active":"disable"}</span><br/><br/>
-        <button onClick={()=>setAfter20(!After20)}>page visit After20 seconds</button>{" "}<span>{After20? "active":"disable"}</span><br/><br/>
+        <button onClick={()=>setAfter10(!After10)}>page visit After5 seconds</button>{" "}<span>{After10? "active":"disable"}</span><br/><br/>
+        <button onClick={()=>setAfter20(!After20)}>page visit After10 seconds</button>{" "}<span>{After20? "active":"disable"}</span><br/><br/>
         <div>
         <Events trigger={popuprules}/></div>
       

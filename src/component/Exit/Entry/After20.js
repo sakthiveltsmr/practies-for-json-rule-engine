@@ -22,7 +22,7 @@ const Afterentrypopup = () => {
 
    const saveToStorage = () => storageType.setItem(consentPropertyName,true);
 
-    document.onmouseenter=()=>{
+    // document.onmouseenter=()=>{
 
             const value=shouldShowPopup()
             console.log(value)
@@ -65,7 +65,7 @@ const Afterentrypopup = () => {
     }
     
     }
-    }
+    // }
         
 
 

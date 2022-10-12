@@ -1,6 +1,7 @@
 import React from 'react'
 // import exitpopupt from './exitpopupt'
 import Exitpopuptrigger from './Exitpopuptrigger'
+import { welcome } from './component/Welcome/welcome'
 
 const Model = ({ popups }) => {
 
@@ -12,7 +13,7 @@ const Model = ({ popups }) => {
                 return Exitpopuptrigger()
       
               case 'Entryintend':
-                return <h1>Entrypopups</h1>
+                return welcome()
       
               case 'Addtocart':
                 return <h1>Addtocartpopup Activated</h1>
