@@ -5,7 +5,7 @@ import create from "zustand";
   Addtocart:false,
   Coupon:false,
   After10:false,
-   After20:false,
+  Url:false,
  Exitintent:false,
   setExit: (data) => {
     set({ Exit: data });
@@ -24,8 +24,8 @@ import create from "zustand";
     set({After10:data});
 },
 
-setAfter20:(data)=>{
-    set({After20:data})
+setUrl:(data)=>{
+    set({Url:data})
 },
 setExitintent:(data)=>{
     set({Exitintent:data})
