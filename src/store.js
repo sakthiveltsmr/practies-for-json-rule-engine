@@ -6,7 +6,7 @@ import create from "zustand";
   Coupon:false,
   After10:false,
   Url:false,
- Exitintent:false,
+  show:false,
   setExit: (data) => {
     set({ Exit: data });
   },
@@ -27,8 +27,8 @@ import create from "zustand";
 setUrl:(data)=>{
     set({Url:data})
 },
-setExitintent:(data)=>{
-    set({Exitintent:data})
+setShow:(data)=>{
+    set({show:data})
 }
 }));
 

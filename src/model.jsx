@@ -1,11 +1,10 @@
 import React from 'react'
-// import exitpopupt from './exitpopupt'
 import Exitpopuptrigger from './Exitpopuptrigger'
-import { welcome } from './component/Welcome/welcome'
 
-const Model = ({ popups }) => {
 
-  // const popupsview = () => {
+const Model = ({popups}) => {
+
+ 
     if(popups){
         return popups.map((item) => {
             switch (item) {
@@ -13,7 +12,7 @@ const Model = ({ popups }) => {
                 return Exitpopuptrigger()
       
               case 'Entryintend':
-                return welcome()
+                return <>wellcome</>
       
               case 'Addtocart':
                 return <h1>Addtocartpopup Activated</h1>
