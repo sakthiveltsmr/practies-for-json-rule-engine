@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
- import exitpopupt from './exitpopupt'
+//  import exitpopupt from './exitpopupt'
 import { Engine } from 'json-rules-engine'
 import useStore from './store'
 // import { Events } from './component/Exit/Events'
@@ -16,26 +16,27 @@ const Exitpopuptrigger = () => {
             .map(cookie => cookie.split('='))
             .reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
         return cookies[item];
-    }}
-    const myinterval = setInterval(() => {
+    },
+    setItem: (item, value) => {
+      document.cookie = `${item}=${value};`
+  }}
+    setInterval(() => {
       const value = !!cookieStorage.getItem('First_visit') && !!cookieStorage.getItem('url')
-      console.log("checking",value)
+    
       if (value) {
-        console.log("ulla vanta da")
         setAfter10(true)
         seturl(true)
-       
-        clearInterval(myinterval)
+        // clearInterval(myinterval)
+      }else{
+        setAfter10(false)
+        seturl(false)
       }
     }, 1000);
- 
-  
 
-  
 
   const facts = {
     visitafter5seconds:After10,
-    visitafter10seconds:url
+    CurrentURL:url
   }
 
   let engine = new Engine()
@@ -49,7 +50,7 @@ const Exitpopuptrigger = () => {
             value: true,
           },
           {
-            fact: 'visitafter10seconds',
+            fact: 'CurrentURL',
             operator: 'equal',
             value: true,
           },
@@ -59,7 +60,7 @@ const Exitpopuptrigger = () => {
     },
     event: {
       // define the event to fire when the conditions evaluate truthy
-      type: 'Exitintend',
+      type: 'showed',
       params: {
         message: 'show popups!',
         success:true
@@ -67,16 +68,14 @@ const Exitpopuptrigger = () => {
       },
     },
   })
-  const Trigger = async () => {
-    await engine
-      .run(facts).then(({ events }) => {
-        console.log("came here----------------------")
-        events.map((event)=>{if(event.params.success){
-
-         
-          return exitpopupt()
+  const Trigger =  () => {
+   engine.run(facts).then(({ events }) => {
+       events.map((event)=>{if(event.params.success){
+         cookieStorage.setItem('showed',true)
+          // return exitpopupt()
           
         }})
+      
       })
       .catch((error) => {
         console.log(error)

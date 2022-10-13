@@ -22,10 +22,8 @@
    
     }
     
-    window.onmouseout=(event)=>{
-      if(event.screenY<=180){
-
-      
+    window.onmouseout=()=>{
+     
       const storage=cookieStorage
       let exittime=new Date()
       locationexit=window.location.href
@@ -33,15 +31,18 @@
       const sec=Math.floor(total/1000)
       
       
+       
       if(locationentry===locationexit){
-          storage.setItem('url',locationentry)
+
           if(5<=sec){
               storage.setItem(`First_visit`,total); 
+              storage.setItem('url',locationentry);
             }
             }
+    
             
         }
-    }
+    
     
     
 
