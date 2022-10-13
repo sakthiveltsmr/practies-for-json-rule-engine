@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Model from '../model';
 
 const EventRuels = ({facts}) => {
-  console.log(facts)
+    
  const[popups,setPopups]=useState('')
 
   let engine=new Engine();
@@ -66,7 +66,7 @@ const EventRuels = ({facts}) => {
     
   },[facts])
 
-  
+
 
   return (
     <><Model popups={popups}/></>

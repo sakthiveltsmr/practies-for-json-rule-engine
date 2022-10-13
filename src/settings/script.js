@@ -64,31 +64,34 @@ getMountnode()
             }
             }
             
-         setInterval(()=>{
+        let myInterval= setInterval(()=>{
                 const showed=!! storage.getItem('showed')
-                console.log(showed)
+                
                 if(showed){
                    popups=true
-                //    clearInterval(myinterval)
+                   clearInterval(myInterval)
                 }
             },1000)
-            const shouldShowPopup =!storage.getItem('Exicute');
+            const shouldShowPopup =()=>!storage.getItem('Exicute');
 
-            const saveToStorage = () => storage.setItem('Exicute',exittime);
+           if(popups){
 
-           if(popups && shouldShowPopup){
-          
-               
-            if(event.screenY<=180){
-                console.log("execution success")
-                   saveToStorage()
-                   
-            let main= document.getElementById('root');
-                        
-                const data=document.createElement('div')
-             data.innerHTML=(`<body id="iapg" style="box-sizing: border-box; margin: 0;">
-                <div id="Template-One" class="freedownloads-popup-sec"
-                style="background-color: rgb(142, 142, 65); font-family: 'Roboto Slab', serif; width: 700px; margin-top: 30px; margin-right: auto; margin-bottom: 30px; margin-left: auto; padding-top: 45px; padding-right: 65px; padding-bottom: 65px; padding-left: 65px; box-sizing: border-box; position: relative; box-shadow: rgba(50, 50, 50, 0.52) 0px 10px 20px 0px; background: #8E8E41 url(images/freedownloads.jpg) no-repeat center center; background-size: cover;">
+            const value=shouldShowPopup()
+            console.log(value)
+
+             if(value){
+                 
+                 if(event.screenY<=160){
+                     console.log("execution success")
+                     storage.setItem('Exicute',Date.now());
+                     
+                     
+                     let main= document.getElementById('root');
+                     
+                     const data=document.createElement('div')
+                     data.innerHTML=(`<body id="iapg" style="box-sizing: border-box; margin: 0;">
+                     <div id="Template-One" class="freedownloads-popup-sec"
+                     style="background-color: rgb(142, 142, 65); font-family: 'Roboto Slab', serif; width: 700px; margin-top: 30px; margin-right: auto; margin-bottom: 30px; margin-left: auto; padding-top: 45px; padding-right: 65px; padding-bottom: 65px; padding-left: 65px; box-sizing: border-box; position: relative; box-shadow: rgba(50, 50, 50, 0.52) 0px 10px 20px 0px; background: #8E8E41 url(images/freedownloads.jpg) no-repeat center center; background-size: cover;">
                 <h2 data-edit="text"
                 style="box-sizing: border-box; margin-top: 0px; margin-right: 0px; margin-bottom: 25px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; line-height: 88px; font-family: 'Roboto Slab', serif; font-size: 82px; color: rgb(255, 255, 0); font-weight: normal;">
                 Free Design Downloads</h2>
@@ -112,6 +115,7 @@ getMountnode()
             </body>`)
             main.appendChild(data)
             return main
+        }
         }
         }
            }

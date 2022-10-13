@@ -1,10 +1,9 @@
 import { Engine } from 'json-rules-engine'
 import { useEffect } from 'react'
 import { cookieStorage } from '../cookies/cookie'
-// import {Export} from"../settings/export"
-// import useStore from '../store'
+
 const Exitruels = ({facts}) => {
-    // const setShow=useStore((state)=>state.setShow)
+   
     let engine = new Engine()
 
   engine.addRule({
@@ -35,10 +34,12 @@ const Exitruels = ({facts}) => {
   })
 
   const Trigger=()=>{
-    engine.run(facts).then(({ events }) => {
+    engine.run(facts).then(({ events,results }) => {
+        console.log(results)
         events.map((event)=>{if(event.params.success){
-            // setShow(true)
-          cookieStorage.setItem('showed',true)
+           
+          cookieStorage.setItem('showed',Date.now())
+          
          }})
        
        })
@@ -49,6 +50,7 @@ const Exitruels = ({facts}) => {
   useEffect(()=>{
    
       Trigger()
+
   },[facts])
    
   return(
