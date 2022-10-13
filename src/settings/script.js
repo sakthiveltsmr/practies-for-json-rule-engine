@@ -1,4 +1,4 @@
-import useStore from "../store"
+
 
 function getMountnode(){
 
@@ -21,8 +21,8 @@ function getMountnode(){
 getMountnode()
 
  function ExitUser(){
-   const show=useStore((state)=>state.show)
-   console.log(show)
+   
+   
    let popups
     let entrytime
     let exittime
@@ -63,19 +63,19 @@ getMountnode()
             }
             }
             
-        //  setInterval(()=>{
-        //         const showed=!! storage.getItem('showed')
-        //         console.log(showed)
-        //         if(showed){
-        //            popups=true
-        //         //    clearInterval(myinterval)
-        //         }
-        //     },1000)
+         setInterval(()=>{
+                const showed=!! storage.getItem('showed')
+                console.log(showed)
+                if(showed){
+                   popups=true
+                //    clearInterval(myinterval)
+                }
+            },1000)
             const shouldShowPopup =!storage.getItem('Exicute');
 
             const saveToStorage = () => storage.setItem('Exicute',exittime);
 
-           if(show && shouldShowPopup){
+           if(popups && shouldShowPopup){
           
                
             if(event.screenY<=180){
