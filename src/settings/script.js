@@ -44,17 +44,18 @@ getMountnode()
     document.onmouseenter=()=>{
         entrytime = new Date()
        locationentry=window.location.href
+       console.log(entrytime,"entry")
    
     }
     
     window.onmouseout=(event)=>{
      
       const storage=cookieStorage
-      let exittime=new Date()
+       exittime=new Date()
       locationexit=window.location.href
       const total=exittime-entrytime;
       const sec=Math.floor(total/1000)
-      
+      console.log(exittime,'exittime')
       if(locationentry===locationexit){
 
           if(3<=sec){
