@@ -11,7 +11,7 @@ const Exitpopuptrigger = () => {
 
   
     setInterval(() => {
-      const value = !!cookieStorage.getItem('First_visit') && !!cookieStorage.getItem('url')
+      const value = !!cookieStorage.getItem('First_visit')
     
       if (value) {
         setAfter10(true)

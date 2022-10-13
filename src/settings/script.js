@@ -60,7 +60,7 @@ getMountnode()
 
           if(3<=sec){
               storage.setItem(`First_visit`,total); 
-              storage.setItem('url',locationentry);
+             
             }
             }
             
