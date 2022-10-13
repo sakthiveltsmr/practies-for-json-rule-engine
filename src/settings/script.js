@@ -24,7 +24,7 @@ getMountnode()
  window.campain={
     app_id:"12333",
     domain:"https://retainfull/popups",
-    active:"true"
+    active:false
  }
 
 let popups
