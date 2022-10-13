@@ -1,95 +1,96 @@
 
 
-function getMountnode(){
+function getMountnode() {
 
-   
-    const elemetID="root"
-    let MOUNT_NODE=document.getElementById("root")
 
-    if(!MOUNT_NODE){
-       const element=document.createElement('div')
-       element.innerHTML=`<div id="${elemetID}"></div>`
-       document.body.appendChild(element)
-       MOUNT_NODE=document.getElementById(elemetID)
-    
+    const elemetID = "root"
+    let MOUNT_NODE = document.getElementById("root")
+
+    if (!MOUNT_NODE) {
+        const element = document.createElement('div')
+        element.innerHTML = `<div id="${elemetID}"></div>`
+        document.body.appendChild(element)
+        MOUNT_NODE = document.getElementById(elemetID)
+
     }
     console.log('root success')
-    
+
     return MOUNT_NODE
 }
 
 getMountnode()
 
- function ExitUser(){
-   
-   
-   let popups
-    let entrytime
-    let exittime
-    var locationentry
-    var locationexit
-    const cookieStorage = {
-        getItem: (item) => {
-            const cookies = document.cookie
-                .split(';')
-                .map(cookie => cookie.split('='))
-                .reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
-            return cookies[item];
-        },
-        setItem: (item, value) => {
-            document.cookie = `${item}=${value};`
+//  function ExitUser(){
+
+
+let popups
+let entrytime
+let exittime
+var locationentry
+var locationexit
+const cookieStorage = {
+    getItem: (item) => {
+        const cookies = document.cookie
+            .split(';')
+            .map(cookie => cookie.split('='))
+            .reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
+        return cookies[item];
+    },
+    setItem: (item, value) => {
+        document.cookie = `${item}=${value};`
+    }
+}
+
+document.onmouseenter = () => {
+    entrytime = new Date()
+    locationentry = window.location.href
+    console.log(entrytime, "entry")
+
+}
+
+document.onmouseleave = (event) => {
+     
+    const storage = cookieStorage
+    exittime = new Date()
+    locationexit = window.location.href
+    const total = exittime - entrytime;
+    const sec = Math.floor(total / 1000)
+    console.log(exittime, 'exittime')
+    if (locationentry === locationexit) {
+
+        if (3<=sec) {
+            storage.setItem(`First_visit`, total);
+
         }
     }
-    
-    document.onmouseenter=()=>{
-        entrytime = new Date()
-       locationentry=window.location.href
-       console.log(entrytime,"entry")
-   
-    }
-    
-    window.onmouseout=(event)=>{
-     
-      const storage=cookieStorage
-       exittime=new Date()
-      locationexit=window.location.href
-      const total=exittime-entrytime;
-      const sec=Math.floor(total/1000)
-      console.log(exittime,'exittime')
-      if(locationentry===locationexit){
 
-          if(3<=sec){
-              storage.setItem(`First_visit`,total); 
-             
-            }
-            }
-            
-        let myInterval= setInterval(()=>{
-                const showed=!! storage.getItem('showed')
-                
-                if(showed){
-                   popups=true
-                   clearInterval(myInterval)
-                }
-            },1000)
-            const shouldShowPopup =()=>!storage.getItem('Exicute');
+    let myInterval = setInterval(() => {
+        const showed = !!storage.getItem('showed')
 
-           if(popups){
+        if (showed) {
+            popups = true
+            clearInterval(myInterval)
+        }
+        
+    }, 1000)
+    const shouldShowPopup = !!storage.getItem('Exicute');
 
-            const value=shouldShowPopup()
-            console.log(value)
+    if (popups&&!shouldShowPopup) {
+        popups = false;
 
-             if(value){
-                 
-                 if(event.screenY<=160){
-                     console.log("execution success")
-                     storage.setItem('Exicute',Date.now());
-                     
-                     
-                     let main= document.getElementById('root');
-                     
-                     const data=document.createElement('div')
-                     data.innerHTML=(`<body id="iapg" style="box-sizing: border-box; margin: 0;">
+        if (event.screenY<=120) {
+            // popups = false;
+
+
+
+                console.log("execution success")
+                storage.setItem('Exicute', Date.now());
+
+
+                let main = document.getElementById('root');
+
+                const data = document.createElement('div')
+                data.innerHTML = (`<body id="iapg" style="box-sizing: border-box; margin: 0;">
                      <div id="Template-One" class="freedownloads-popup-sec"
                      style="background-color: rgb(142, 142, 65); font-family: 'Roboto Slab', serif; width: 700px; margin-top: 30px; margin-right: auto; margin-bottom: 30px; margin-left: auto; padding-top: 45px; padding-right: 65px; padding-bottom: 65px; padding-left: 65px; box-sizing: border-box; position: relative; box-shadow: rgba(50, 50, 50, 0.52) 0px 10px 20px 0px; background: #8E8E41 url(images/freedownloads.jpg) no-repeat center center; background-size: cover;">
                 <h2 data-edit="text"
@@ -113,17 +114,17 @@ getMountnode()
             style="box-sizing: border-box; outline-color: initial; outline-style: none; outline-width: initial; font-size: 14px; line-height: 18px; width: 28px; height: 28px; border-top-left-radius: 50%; border-top-right-radius: 50%; border-bottom-right-radius: 50%; border-bottom-left-radius: 50%; background-image: initial; background-position-x: initial; background-position-y: initial; background-size: initial; background-repeat-x: initial; background-repeat-y: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(255, 255, 255); position: absolute; right: -14px; top: -14px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style: initial; border-right-style: initial; border-bottom-style: initial; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial; box-shadow: rgba(0, 0, 0, 0.27) 0px 0px 2px 0px; cursor: pointer;">X</button>
             </div>
             </body>`)
-            main.appendChild(data)
-            return main
+                main.appendChild(data)
+                return main
+            }
         }
-        }
-        }
-           }
-        }
+    }
 
-        ExitUser()
+        // }
 
-        
-    
-    
-    
+        // ExitUser()
+
+
+
+
+
