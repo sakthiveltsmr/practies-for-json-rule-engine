@@ -1,7 +1,7 @@
 import { Engine } from 'json-rules-engine'
 import { useEffect } from 'react'
 import { cookieStorage } from '../cookies/cookie'
-import {ExitUser}from"../settings/script"
+// import {Export} from"../settings/export"
 import useStore from '../store'
 const Exitruels = ({facts}) => {
     const setShow=useStore((state)=>state.setShow)
@@ -38,7 +38,7 @@ const Exitruels = ({facts}) => {
     engine.run(facts).then(({ events }) => {
         events.map((event)=>{if(event.params.success){
             setShow(true)
-        //   cookieStorage.setItem('showed',true)
+          cookieStorage.setItem('showed',true)
          }})
        
        })
@@ -52,7 +52,7 @@ const Exitruels = ({facts}) => {
   },[facts])
    
   return(
-    <>{ExitUser()}</>
+    <></>
   )
   
 }

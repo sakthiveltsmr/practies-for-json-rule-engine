@@ -1,4 +1,5 @@
 import useStore from "../store"
+
 function getMountnode(){
 
    
@@ -19,7 +20,7 @@ function getMountnode(){
 
 getMountnode()
 
- export function ExitUser(){
+ function ExitUser(){
    const show=useStore((state)=>state.show)
    console.log(show)
    let popups
@@ -114,7 +115,7 @@ getMountnode()
            }
         }
 
-        // ExitUser()
+        ExitUser()
 
         
     
