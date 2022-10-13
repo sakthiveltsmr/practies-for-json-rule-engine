@@ -21,7 +21,11 @@ function getMountnode() {
 getMountnode()
 
 //  function ExitUser(){
-
+ window.campain={
+    app_id:"12333",
+    domain:"https://retainfull/popups",
+    active:"true"
+ }
 
 let popups
 let entrytime
