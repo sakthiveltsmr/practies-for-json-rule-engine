@@ -66,6 +66,8 @@ const EventRuels = ({facts}) => {
     
   },[facts])
 
+  
+
   return (
     <><Model popups={popups}/></>
   )
