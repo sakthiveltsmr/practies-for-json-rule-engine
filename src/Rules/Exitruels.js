@@ -34,12 +34,12 @@ const Exitruels = ({facts}) => {
   })
 
   const Trigger=()=>{
-    engine.run(facts).then(({ events,results }) => {
-        console.log(results)
+    engine.run(facts).then(({ events }) => {
+      
         events.map((event)=>{if(event.params.success){
            
           cookieStorage.setItem('showed',Date.now())
-          
+
          }})
        
        })
