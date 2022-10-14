@@ -2,7 +2,9 @@ import React from 'react'
 // import { cookieStorage } from './cookies/cookie'
 import Exitruels from './Rules/Exitruels'
 import useStore from './store'
-import utill from"./settings/utils"
+
+import { CookiesFn } from './settings/utils'
+
 const Exitpopuptrigger = () => {
   const After10 = useStore((state) => state.After10)
   const setAfter10 = useStore((state) => state.setAfter10)
@@ -11,7 +13,7 @@ const Exitpopuptrigger = () => {
 
   
     setInterval(() => {
-      const value=!!utill.getCookie('First_visit')
+      const value= !! CookiesFn.getCookie('First_visit')
       console.log(value,"for cookies")
       // const value = !!cookieStorage.getItem('First_visit')
       if (value) {
@@ -24,14 +26,14 @@ const Exitpopuptrigger = () => {
     }, 1000);
 
 
-  const facts = {
+  const rules = {
     visitafter5seconds:After10,
     CurrentURL:url
   }
 
   return (
     <>
-      <Exitruels facts={facts}/>
+      <Exitruels rules={rules}/>
      
     </>
   )

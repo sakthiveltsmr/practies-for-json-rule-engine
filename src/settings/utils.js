@@ -8,7 +8,7 @@ const options = {
     prefix: 'cr-'
 }
 
-let campain = {
+export const CookiesFn = {
 
     setCookie(name, value, time) {
         Cookies.set(options.prefix + name, value, { expires: time, path: '' })
@@ -78,4 +78,3 @@ let campain = {
     }
 }
 
-export default campain

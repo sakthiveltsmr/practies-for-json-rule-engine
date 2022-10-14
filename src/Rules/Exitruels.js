@@ -1,28 +1,26 @@
 import { Engine } from 'json-rules-engine'
 import { useEffect } from 'react'
-import { cookieStorage } from '../cookies/cookie'
-
-const Exitruels = ({facts}) => {
+// import { cookieStorage } from '../cookies/cookie'
+import { CookiesFn } from '../settings/utils'
+const Exitruels = ({rules}) => {
    
     let engine = new Engine()
 
   engine.addRule({
-    conditions: {
+    conditions: { 
+        
         all: [
-          {
-            fact: 'visitafter5seconds',
-            operator: 'equal',
-            value: true,
-          },
-          {
-            fact: 'CurrentURL',
-            operator: 'equal',
-            value: true,
-          },
-        ]
-    
-      
-    },
+        {
+          fact: 'visitafter5seconds',
+          operator: 'equal',
+          value: true,
+        },
+        {
+          fact: 'CurrentURL',
+          operator: 'equal',
+          value: true,
+        },
+      ]},
     event: {
       type: 'showed',
       params: {
@@ -34,11 +32,11 @@ const Exitruels = ({facts}) => {
   })
 
   const Trigger=()=>{
-    engine.run(facts).then(({ events }) => {
+    engine.run(rules).then(({events})=> {
       
         events.map((event)=>{if(event.params.success){
            
-          cookieStorage.setItem('showed',Date.now())
+          CookiesFn.setCookie('showed',Date.now())
 
          }})
        
@@ -51,7 +49,7 @@ const Exitruels = ({facts}) => {
    
       Trigger()
 
-  },[facts])
+  },[rules])
    
   return(
     <></>
