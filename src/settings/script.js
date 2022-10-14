@@ -62,7 +62,7 @@ document.onmouseleave = (event) => {
     console.log(exittime, 'exittime')
     if (locationentry === locationexit) {
 
-        if (3<=sec) {
+        if (5<=sec) {
             storage.setItem(`First_visit`, total);
 
         }
@@ -84,8 +84,6 @@ document.onmouseleave = (event) => {
 
         if (event.screenY<=120) {
             // popups = false;
-
-
 
                 console.log("execution success")
                 storage.setItem('Exicute', Date.now());

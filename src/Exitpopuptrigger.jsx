@@ -17,18 +17,18 @@ const Exitpopuptrigger = () => {
       console.log(value,"for cookies")
       // const value = !!cookieStorage.getItem('First_visit')
       if (value) {
-        setAfter10(true)
-        seturl(true) 
+        setAfter10(5)
+        seturl(5) 
       }else{
-        setAfter10(false)
-        seturl(false)
+        setAfter10(0)
+        seturl(0)
       }
     }, 1000);
 
 
   const rules = {
-    visitafter5seconds:After10,
-    CurrentURL:url
+    stay5secondonpage:After10,
+    currentUrl:url
   }
 
   return (

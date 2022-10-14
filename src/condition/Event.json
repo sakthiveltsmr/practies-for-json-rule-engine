@@ -1,0 +1,26 @@
+{
+
+   "any": [{
+        
+        "fact": "Exitintend",
+        "operator": "equal",
+        "value": true
+      }, 
+      {
+        "fact": "Entryintend",
+        "operator":"equal",
+        "value": true
+      },
+      {
+          "fact":"Addtocart",
+          "operator":"equal",
+          "value":true
+      },
+      {
+          "fact":"Coupon",
+          "operator":"equal",
+          "value":true
+      }
+    ]
+}
+

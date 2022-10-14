@@ -1,0 +1,20 @@
+
+{ 
+
+    "all": [
+    {
+      "fact": "stay5secondonpage",
+      "operator":"equal",
+      "value": true
+     
+    },
+    {
+      "fact":"currentUrl",
+      "operator":"equal",
+      "value": true
+     
+    }
+  ]
+}
+
+  

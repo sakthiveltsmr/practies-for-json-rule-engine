@@ -9,7 +9,7 @@ const Popuprules =() => {
    const coupon=useStore((state)=>state.Coupon)
   
 
-  const  facts={ 
+  const  rules={ 
     Exitintend:Exit,
     Entryintend:Entry,
     Addtocart:Add,
@@ -20,7 +20,7 @@ const Popuprules =() => {
 
   return (
     <>
-    <EventRuels facts={facts}/>
+    <EventRuels rules={rules}/>
     </>
   )
 }

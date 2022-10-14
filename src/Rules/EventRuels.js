@@ -1,39 +1,17 @@
 import { Engine } from 'json-rules-engine';
 import React, { useEffect, useState } from 'react'
 import Model from '../model';
+import  Event from "../condition/Event.json"
+const EventRuels = ({rules}) => {
 
-const EventRuels = ({facts}) => {
-    
  const[popups,setPopups]=useState('')
 
   let engine=new Engine();
-
+   
+    
     engine.addRule({
-      conditions: {
-        any: [{
-        
-          fact: 'Exitintend',
-          operator: 'equal',
-          value: true
-        }, 
-        {
-          fact: 'Entryintend',
-          operator: 'equal',
-          value: true
-        },
-        {
-            fact:'Addtocart',
-            operator:'equal',
-            value:true
-        },
-        {
-            fact:'Coupon',
-            operator:'equal',
-            value:true
-        }
-    ] 
-    },
-    event: {  // define the event to fire when the conditions evaluate truthy
+      conditions:Event,
+    event: { 
       type:"popups",
       params: {
         message: 'show popups!'
@@ -43,7 +21,7 @@ const EventRuels = ({facts}) => {
   })
   
   const Trigger=()=>{
-    engine.run(facts).then(({results})=>{
+    engine.run(rules).then(({results})=>{
         const data=results[0].conditions.any.filter((item)=>{
           return item.factResult===true  && item.result===true
         })
@@ -64,7 +42,7 @@ const EventRuels = ({facts}) => {
         
         Trigger()
     
-  },[facts])
+  },[rules])
 
 
 
