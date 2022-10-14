@@ -5,22 +5,25 @@ import { CookiesFn } from '../settings/utils'
 const Exitruels = ({rules}) => {
    
     let engine = new Engine()
+    let master=
+        { 
+        
+            all: [
+            {
+              fact: 'visitafter5seconds',
+              operator: 'equal',
+              value: true,
+            },
+            {
+              fact: 'CurrentURL',
+              operator: 'equal',
+              value: true,
+            },
+          ]}
+    
 
   engine.addRule({
-    conditions: { 
-        
-        all: [
-        {
-          fact: 'visitafter5seconds',
-          operator: 'equal',
-          value: true,
-        },
-        {
-          fact: 'CurrentURL',
-          operator: 'equal',
-          value: true,
-        },
-      ]},
+    conditions:master ,
     event: {
       type: 'showed',
       params: {

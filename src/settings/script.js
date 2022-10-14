@@ -69,7 +69,7 @@ document.onmouseleave = (event) => {
     }
 
     let myInterval = setInterval(() => {
-        const showed = !!storage.getItem('cr-showed')
+        const showed = !!storage.getItem('showed')
 
         if (showed) {
             popups = true

@@ -11,7 +11,7 @@ const options = {
 export const CookiesFn = {
 
     setCookie(name, value, time) {
-        Cookies.set(options.prefix + name, value, { expires: time, path: '' })
+        Cookies.set(name, value, { expires: time, path: '' })
     },
 
     getCookie(name) {
